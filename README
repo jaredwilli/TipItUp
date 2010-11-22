@@ -5,7 +5,7 @@ For example:
 
 <div class="thumbs">
     
-    <a href="http://store.portcandle.com/wp-content/uploads/wpsc/product_images/candlecards-1.jpg" title="Candle Cards">
+    <a href="/path_to_image/filename.jpg" title="This is the image title">
 
 </div>
 

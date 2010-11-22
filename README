@@ -1,0 +1,28 @@
+Usage: All you have to do to use this plugin is select the element that contains a set of links which link to image files.
+
+For example:
+------------
+
+<div class="thumbs">
+    
+    <a href="http://store.portcandle.com/wp-content/uploads/wpsc/product_images/candlecards-1.jpg" title="Candle Cards">
+
+</div>
+
+----------
+
+Add a tooltip to show the image like this:
+
+-------
+
+$(function() {
+    $('.thumbs').TipItUp();
+
+    // customize options support:
+    $('.thumbs').TipItUp({
+        offset: 20;
+        speed: 50;
+        delay: 100;
+    });
+});
+

@@ -1,7 +1,8 @@
 /**
- * Name: TipItUp v1.0 - Tipping it up...
+ * Name: TipItUp v1.0.3 - Tipping it up...
  * Author: Jared Williams - http://new2wp.com
  * URI: http://new2jquery.com/plugins/tipitup-jquery-image-tooltip
+ * Demo: http://www.jsfiddle.net/jaredwilli/gyVkB/7/
  * Copyright (c) 2010 jaredwilli
  * Licensed under the MIT License: http://www.opensource.org/licenses/mit-license.php
  */

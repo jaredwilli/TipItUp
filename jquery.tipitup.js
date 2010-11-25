@@ -63,13 +63,18 @@
                     $link.data('active', true);
                     tip.position(event);
 
-                    $imgTip.html('<img src="' + tip.link + '" alt="' + tip.title + '" />').fadeOut(0).fadeIn( settings.speed );
+                    $imgTip.html('<img src="' + tip.link + '" alt="' + tip.title + '" /><br />' + tip.title)
+                    	.fadeOut( 'fast' ).fadeIn( settings.speed );
+	            // tip.link = link.href;
+        	    $link.attr('href', '');
+        	    $link.attr('title', '');
+                    
                 }, settings.delay );
             }
 
             if (event.type == 'mouseout') {
-                link.href = tip.href || link.href;
-                link.title = tip.title || link.title;                
+                link.href = tip.link;
+                link.title = tip.title;
                 if ($link.data('active')) {
                     $link.removeData('active');
                     $imgTip.hide();

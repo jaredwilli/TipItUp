@@ -1,4 +1,6 @@
-Usage: All you have to do to use this plugin is select the element that contains a set of links which link to image files.
+Using the plugin: 
+
+All you have to do to use this plugin is select the element that contains a set of links which link to image files.
 
 For example:
 ------------
@@ -20,9 +22,9 @@ $(function() {
 
     // customize options support:
     $('.thumbs').TipItUp({
-        offset: 20;
-        speed: 50;
-        delay: 100;
+        offset: 20; // offset from mouse position
+        speed: 50; // fade in speed
+        delay: 100; // delay before fade in
     });
 });
 

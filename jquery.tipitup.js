@@ -5,6 +5,7 @@
  * Copyright (c) 2010 jaredwilli
  * Licensed under the MIT License: http://www.opensource.org/licenses/mit-license.php
  */
+
 (function($) {
     $.fn.TipItUp = function(options) {
 
@@ -38,13 +39,13 @@
                 
                 for (var axis in dimensions ) {
                     if (dimensions[axis][0] < dimensions[axis][1] + positions[axis] + settings.offset) {
-                        positions[axis] -= dimensions[axis][1] + settings.offset;
+                        positions[axis] -= dimensions[axis][1] - settings.offset;
                     } else {
                         positions[axis] += settings.offset;
                     }
                 }
                 
-                $imgTip.css({ top: positions.y, left: positions.x, width: '200px', height: '200px', position: 'absolute' });
+                $imgTip.css({ top: positions.y, left: positions.x });
             }
         };
         

@@ -1,0 +1,142 @@
+<!doCtYpe html><head>
+<title>jQuery Plugin - TipItUp - Demo Page</title>
+
+<style type="text/css">
+body { margin:0 auto; width:632px; font-size:12px; }
+h1 { font-size:28px; }
+.fr { float:right; }
+.footer { display:block; }
+
+.demo1 { margin:12px auto; padding:10px; border:1px solid #666; }
+.demo2 { margin:12px auto; padding:10px; border:1px solid #ccc; overflow:hidden; }
+.demo3 { margin:12px auto; padding:10px; border:1px solid #ccc; overflow:hidden; }
+.demo3 .nested { list-style:none; display:block; margin:10px 0 0; width:160px; }
+.demo3 .parent { float:left; margin-right: 30px; }
+
+.tip{ position:absolute; z-index: 10; top: 0px; }
+
+</style>
+</head>
+<body>
+
+<h1 align="center">jQuery Plugin $.TipItUp() Demo Page</h1>
+<div align="center"><em>Plugin by: Jared Williams</em> &mdash; <a href="http://new2wp.com">http://new2wp.com</a></div>
+
+<p>This plugin is a simple image tooltip script that uses the <a href="http://api.jquery.com/delegate/" target="_blank">.delegate()</a> method in jQuery which makes use of the events <a href="http://api.jquery.com/mouseout/" target="_blank">mouseover</a>, <a href="http://api.jquery.com/mouseout/" target="_blank">mouseout</a> and <a href="http://api.jquery.com/mousemove/" target="_blank">mousemove</a> when applied to an element which contains anchor $('a') elements that link to image files.</p>
+
+<p><strong>Explanation:</strong><br />
+When hovering your mouse over the link, the image will display as a tooltip using the the href value of the link, and the title of the link, if one exists, will be displayed below the image in the tooltip.</p>
+
+<p>The script removes the value from the link href and title attributes temporarily while mousing over the link, and transfers them back to the link when mousing off of it.</p>
+
+<p>While you hover over the link, the mouse move event is used to make the tooltip follow the position of the mouse while you hover the link.</p>
+
+<p>Event delegation is to bind an event handler to a containing element and then have an action take place based on which specific element within that containing element is targeted.</p>
+
+<strong>Demo 1</strong><br />
+
+It works with just plain text links to images.
+
+<div class="demo1">
+		<a href="http://new2wp.com/wp-content/uploads/2010/11/science--300x284.jpg" title="Christian Science Theater in Boston">Image 1</a>
+		<a href="http://new2wp.com/wp-content/uploads/2010/11/DSC00023-300x225.jpg" title="Science Theater">Image 2</a>
+		<a href="http://new2wp.com/wp-content/uploads/2010/11/celldriving-300x225.jpg" title="Driving with Style">Image 3</a>
+		<a href="http://new2wp.com/wp-content/uploads/2010/06/new2wp-mac-200x200.png" title="Insite.ly"></a>
+		<a href="http://new2wp.com/wp-content/uploads/2010/11/Morning-Perfection-6-300x225.png" title="Zakim Sunrise">Image 4</a>
+		<a href="http://new2wp.com/wp-content/uploads/2010/11/DSC00023-300x225.jpg" title="Science Theater">Image 5</a>
+		<a href="http://new2wp.com/wp-content/uploads/2010/11/celldriving-300x225.jpg" title="Driving with Style">Image 6</a>
+		<a href="http://new2wp.com/wp-content/uploads/2010/11/science--300x284.jpg" title="Christian Science Theater in Boston">Image 7</a>
+		<a href="http://new2wp.com/wp-content/uploads/2010/11/DSC00023-300x225.jpg" title="Science Theater">Image 8</a>
+		<a href="http://new2wp.com/wp-content/uploads/2010/11/celldriving-300x225.jpg" title="Driving with Style">Image 9</a>
+		<a href="http://new2wp.com/wp-content/uploads/2010/11/science--300x284.jpg" title="Christian Science Theater in Boston">Image 10</a>
+	<a href="http://new2wp.com/wp-content/uploads/2010/11/DSC00023-300x225.jpg" title="Science Theater">Image 11</a>
+</div>
+
+<strong>Demo 2</strong><br />
+
+You can use thumbnails that link to the fullsize version of them.
+
+<div class="demo2">
+	<a href="http://new2wp.com/wp-content/uploads/2010/11/science--300x284.jpg" title="Science Theater"><img src="http://new2wp.com/wp-content/uploads/2010/11/science--200x200.jpg" alt="Christian Science Theater in Boston" width="50" height="50" border="0" title="Christian Science Theater in Boston" /></a>
+	<a href="http://new2wp.com/wp-content/uploads/2010/11/DSC00023-300x225.jpg" title="Science Theater"><img src="http://new2wp.com/wp-content/uploads/2010/11/DSC00023-200x200.jpg" alt="Science Theater" width="50" height="50" border="0" /></a>
+	<a href="http://new2wp.com/wp-content/uploads/2010/11/celldriving-300x225.jpg" title="Driving with Style"><img src="http://new2wp.com/wp-content/uploads/2010/11/celldriving-200x200.jpg" alt="Driving with Style" width="50" height="50" border="0" /></a>
+	<a href="http://new2wp.com/wp-content/uploads/2010/11/Morning-Perfection-6-300x225.png" title="Zakim Sunrise"><img src="http://new2wp.com/wp-content/uploads/2010/11/Morning-Perfection-6-200x200.png" alt="Zakim Sunrise" width="50" height="50" border="0" title="Zakim Sunrise" /></a>
+	<a href="http://new2wp.com/wp-content/uploads/2010/11/DSC00023-300x225.jpg" title="Science Theater"><img src="http://new2wp.com/wp-content/uploads/2010/11/DSC00023.jpg" alt="Science Theater" width="50" height="50" border="0" /></a>
+	<a href="http://new2wp.com/wp-content/uploads/2010/11/celldriving-300x225.jpg" title="Driving with Style"><img src="http://new2wp.com/wp-content/uploads/2010/11/celldriving-200x200.jpg" alt="Driving with Style" width="50" height="50" border="0" /></a>
+	<a href="http://new2wp.com/wp-content/uploads/2010/11/science--300x284.jpg" title="Science Theater"><img src="http://new2wp.com/wp-content/uploads/2010/11/science--200x200.jpg" alt="Christian Science Theater in Boston" width="50" height="50" border="0" title="Christian Science Theater in Boston" /></a>
+	<a href="http://new2wp.com/wp-content/uploads/2010/11/DSC00023-300x225.jpg" title="Science Theater"><img src="http://new2wp.com/wp-content/uploads/2010/11/DSC00023-200x200.jpg" alt="Science Theater" width="50" height="50" border="0" /></a>
+	<a href="http://new2wp.com/wp-content/uploads/2010/11/celldriving-300x225.jpg" title="Driving with Style"><img src="http://new2wp.com/wp-content/uploads/2010/11/celldriving-200x200.jpg" alt="Driving with Style" width="50" height="50" border="0" /></a>
+	<a href="http://new2wp.com/wp-content/uploads/2010/11/science--300x284.jpg" title="Science Theater"><img src="http://new2wp.com/wp-content/uploads/2010/11/science--200x200.jpg" alt="Christian Science Theater in Boston" width="50" height="50" border="0" title="Christian Science Theater in Boston" /></a>
+	<a href="http://new2wp.com/wp-content/uploads/2010/11/DSC00023-300x225.jpg" title="Science Theater"><img src="http://new2wp.com/wp-content/uploads/2010/11/DSC00023-200x200.jpg" alt="Science Theater" width="50" height="50" border="0" /></a>
+</div>
+
+
+<strong>Demo 3</strong><br />
+
+You can use nested elements containing links also.
+
+<div class="demo3">
+
+	<div class="parent">
+		<a href="http://new2wp.com/wp-content/uploads/2010/11/science--300x284.jpg" title="Science Theater"><img src="http://new2wp.com/wp-content/uploads/2010/11/science--200x200.jpg" alt="Christian Science Theater in Boston" width="160" height="160" border="0" title="Christian Science Theater in Boston" /></a>
+	
+		<div class="nested">
+			<a href="http://new2wp.com/wp-content/uploads/2010/11/DSC00023-300x225.jpg" title="Science Theater"><img src="http://new2wp.com/wp-content/uploads/2010/11/DSC00023-200x200.jpg" alt="Science Theater" width="50" height="50" border="0" /></a>
+			<a href="http://new2wp.com/wp-content/uploads/2010/11/Morning-Perfection-6-300x225.png" title="Zakim Sunrise"><img src="http://new2wp.com/wp-content/uploads/2010/11/Morning-Perfection-6-200x200.png" alt="Zakim Sunrise" width="50" height="50" border="0" title="Zakim Sunrise" /></a><a href="http://new2wp.com/wp-content/uploads/2010/11/celldriving-300x225.jpg" title="Driving with Style"></a>
+			<a href="http://new2wp.com/wp-content/uploads/2010/11/celldriving-300x225.jpg" title="Driving with Style"><img src="http://new2wp.com/wp-content/uploads/2010/11/celldriving-200x200.jpg" alt="Driving with Style" width="50" height="50" border="0" /></a>
+		</div>
+	</div>
+	
+	<div class="parent">
+		<a href="http://new2wp.com/wp-content/uploads/2010/11/science--300x284.jpg" title="Science Theater"><img src="http://new2wp.com/wp-content/uploads/2010/11/science--200x200.jpg" alt="Christian Science Theater in Boston" width="160" height="160" border="0" title="Christian Science Theater in Boston" /></a>
+	
+		<div class="nested">
+			<a href="http://new2wp.com/wp-content/uploads/2010/11/DSC00023-300x225.jpg" title="Science Theater"><img src="http://new2wp.com/wp-content/uploads/2010/11/DSC00023-200x200.jpg" alt="Science Theater" width="50" height="50" border="0" /></a>
+			<a href="http://new2wp.com/wp-content/uploads/2010/11/Morning-Perfection-6-300x225.png" title="Zakim Sunrise"><img src="http://new2wp.com/wp-content/uploads/2010/11/Morning-Perfection-6-200x200.png" alt="Zakim Sunrise" width="50" height="50" border="0" title="Zakim Sunrise" /></a><a href="http://new2wp.com/wp-content/uploads/2010/11/celldriving-300x225.jpg" title="Driving with Style"></a>
+			<a href="http://new2wp.com/wp-content/uploads/2010/11/celldriving-300x225.jpg" title="Driving with Style"><img src="http://new2wp.com/wp-content/uploads/2010/11/celldriving-200x200.jpg" alt="Driving with Style" width="50" height="50" border="0" /></a>
+		</div>
+	</div>
+
+	<div class="parent">
+		<a href="http://new2wp.com/wp-content/uploads/2010/11/science--300x284.jpg" title="Science Theater"><img src="http://new2wp.com/wp-content/uploads/2010/11/science--200x200.jpg" alt="Christian Science Theater in Boston" width="160" height="160" border="0" title="Christian Science Theater in Boston" /></a>
+	
+		<div class="nested">
+			<a href="http://new2wp.com/wp-content/uploads/2010/11/DSC00023-300x225.jpg" title="Science Theater"><img src="http://new2wp.com/wp-content/uploads/2010/11/DSC00023-200x200.jpg" alt="Science Theater" width="50" height="50" border="0" /></a>
+			<a href="http://new2wp.com/wp-content/uploads/2010/11/Morning-Perfection-6-300x225.png" title="Zakim Sunrise"><img src="http://new2wp.com/wp-content/uploads/2010/11/Morning-Perfection-6-200x200.png" alt="Zakim Sunrise" width="50" height="50" border="0" title="Zakim Sunrise" /></a><a href="http://new2wp.com/wp-content/uploads/2010/11/celldriving-300x225.jpg" title="Driving with Style"></a>
+			<a href="http://new2wp.com/wp-content/uploads/2010/11/celldriving-300x225.jpg" title="Driving with Style"><img src="http://new2wp.com/wp-content/uploads/2010/11/celldriving-200x200.jpg" alt="Driving with Style" width="50" height="50" border="0" /></a>
+		</div>
+	</div>
+
+</div>
+
+<div class="footer">
+	<div class="fl">Copyright &copy;2010 <a href="http://new2wp.com">Jared Williams</a></div>
+	<div class="fr">Licensed under the <a href="http://www.opensource.org/licenses/mit-license.php" target="_blank">MIT License</a></div>
+	
+</div>
+
+<script src="http://code.jquery.com/jquery-1.4.4.min.js"></script>
+<script src="jquery.tipitup.js"></script>
+<script type="text/javascript">
+$(function() {
+	$('.demo1').TipItUp({
+		style : {
+			border: "1px solid #999",
+			background: "blue",
+			color: "white",
+			fontWeight: "bold"
+		}
+	});
+	
+	$('.demo2').TipItUp({ fadeIn:600, delay:100 });
+	
+	$('.demo3').TipItUp();
+		
+});
+</script>
+
+
+<script type="text/javascript">var gaJsHost=(("https:"==document.location.protocol)?"https://ssl.":"http://www.");document.write(unescape("%3Cscript src='"+gaJsHost+"google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));</script> <script type="text/javascript">try{var pageTracker=_gat._getTracker("UA-12899773-1");pageTracker._trackPageview();}catch(err){}</script>
+
+</body>
+</html>

@@ -13,7 +13,8 @@
         var defaults = {
             offset: 10,
             speed: 200,
-            delay: 40
+            delay: 40,
+			style: {}
         };
 
         var settings = $.extend( {}, defaults, options );

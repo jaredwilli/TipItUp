@@ -13,7 +13,7 @@
         var defaults = {
             offset: 10,
             speed: 200,
-            delay: 40,
+            delay: 10,
 			style: {}
         };
 

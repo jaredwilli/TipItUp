@@ -1,4 +1,4 @@
-##$.TipItUp()##: An image tooltip jQuery plugin with event delegation.
+# $.TipItUp(): An image tooltip jQuery plugin with event delegation.
 
 This plugin is a simple image tooltip script that uses the .delegate() method in jQuery which makes use of the events mouseover, mouseout and mousemove when applied to an element which contains anchor $('a') elements that link to image files. I am planning on adding mouseenter and mouseleave to the events this uses as well, in the near future.
 
@@ -112,3 +112,4 @@ $(function() {
 * fix the mouseover animation buildup when mousing on and off links fast
 * add option to not use mouseover event to show stationary tooltips
 * add option to control the size of images in the tooltip
+

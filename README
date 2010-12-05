@@ -1,3 +1,8 @@
+Blog: http://new2jquery.com/jquery/tipitup-jquery-image-tooltip
+
+Demo page: http://new2jquery.com/wp-content/demos/TipItUp/index.html
+
+
 Using the plugin: 
 
 All you have to do to use this plugin is select the element that contains a set of links which link to image files.
@@ -15,7 +20,7 @@ For example:
 
 Add a tooltip to show the image like this:
 
--------
+----------
 
 $(function() {
     $('.thumbs').TipItUp();
@@ -28,3 +33,31 @@ $(function() {
     });
 });
 
+----------
+Using the style option
+----------
+
+$(function() {
+    $('.thumbs').TipItUp({
+	style : {
+		border: "1px solid #999",
+		backgroundColor: "green",
+		color: "white",
+		padding: "10px",
+		fontWeight: "bold"
+	}
+
+    });
+});
+
+
+
+
+Changelog:
+
+ * Version 1.0.4
+   Added new options for removeHref, removeTitle, styles, offsetx and offsety.
+   The options for offsetx and offsety are still buggy and need fixing. Recommend not using these yet.
+
+ * Version 1.0.3
+   First working production version.

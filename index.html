@@ -4,27 +4,122 @@
 <style type="text/css">
 body { margin:0 auto; width:632px; font-size:12px; }
 h1 { font-size:28px; }
+pre { background:#eee; border:1px solid #ddd; padding:10px; }
+.fl { float:left; }
 .fr { float:right; }
-.footer { display:block; }
+.footer { width:612px; display:inline-block; background:#ccc; color:#333; padding:10px; margin:0; }
+a, a:visited { color:#990000; text-decoration:none; }
+a:hover { color: #FF6600; }
+h3 { border:dashed #ccc; border-width: 2px 0; color:#666; font-size:18px; padding:10px 4px; margin:20px 0 10px; }
 
 .demo1 { margin:12px auto; padding:10px; border:1px solid #666; }
 .demo2 { margin:12px auto; padding:10px; border:1px solid #ccc; overflow:hidden; }
-.demo3 { margin:12px auto; padding:10px; border:1px solid #ccc; overflow:hidden; }
+.demo3 { margin:12px auto; padding:10px; overflow:hidden; }
 .demo3 .nested { list-style:none; display:block; margin:10px 0 0; width:160px; }
 .demo3 .parent { float:left; margin-right: 30px; }
 
-.tip{ position:absolute; z-index: 10; top: 0px; }
-
 </style>
+
+<script src="https://www.google.com/jsapi?key=ABQIAAAAxbmu5lm8fadWzJmMahplahSAiXL1HCmuzZ1K9dgX8NhH3UaxGRSDuZAUmVvRVWo3g1DF07UJ8-xnLw" type="text/javascript"></script>
+<script type="text/javascript">
+google.load('search', '1');
+var imageSearch;
+function addPaginationLinks() {
+	// To paginate search results, use the cursor function.
+	var cursor = imageSearch.cursor;
+	var curPage = cursor.currentPageIndex; // check what page the app is on
+	var pagesDiv = document.createElement('div');
+	for (var i = 0; i < cursor.pages.length; i++) {
+		var page = cursor.pages[i];
+		if (curPage == i) { 		
+			// If we are on the current page, then don't make a link.
+			var label = document.createTextNode(' ' + page.label + ' ');
+			pagesDiv.appendChild(label);
+		} else {
+			// Create links to other pages using gotoPage() on the searcher.
+			var link = document.createElement('a');
+			link.href = 'javascript:imageSearch.gotoPage(' + i + ');';
+			link.innerHTML = page.label;
+			link.style.marginRight = '2px';
+			pagesDiv.appendChild(link);
+		}
+	}	
+	var contentDiv = document.getElementById('demo4');
+	contentDiv.appendChild(pagesDiv);
+}
+	
+function searchComplete() {	
+	// Check that we got results
+	if (imageSearch.results && imageSearch.results.length > 0) {
+		// Grab our demo4 div, clear it.
+		var contentDiv = document.getElementById('demo4');
+		contentDiv.innerHTML = '';		
+		// Loop through our results, printing them to the page.
+		var results = imageSearch.results;
+		for (var i = 0; i < results.length; i++) {
+			// For each result write it's title and image to the screen
+			var result = results[i],
+				title = document.createElement('div'),
+				li = document.createElement('li'),
+				a = document.createElement('a'),
+				ul = document.createElement('ul');
+				
+			title.innerHTML = result.titleNoFormatting;
+			a.href = result.unescapedUrl;
+			a.title = result.titleNoFormatting;
+			a.innerHTML = result.titleNoFormatting;
+
+			li.appendChild(a);
+			ul.appendChild(li);
+			contentDiv.appendChild(ul);
+		}
+		// Now add links to additional pages of search results.
+		//addPaginationLinks(imageSearch);
+	}
+}
+	
+function OnLoad() {
+	// Create an Image Search instance.
+	imageSearch = new google.search.ImageSearch();
+	// Set searchComplete as the callback function when a search is complete.
+	// The imageSearch object will have results in it.
+	imageSearch.setSearchCompleteCallback(this, searchComplete, null);
+	// Find me a beautiful car.
+	imageSearch.execute("jaredwilli");
+	imageSearch.setResultSetSize(64);
+	// Include the required Google branding
+	google.search.Search.getBranding('branding');
+}
+google.setOnLoadCallback(OnLoad);
+
+</script>
+
 </head>
 <body>
 
 <h1 align="center">jQuery Plugin $.TipItUp() Demo Page</h1>
+
 <div align="center"><em>Plugin by: Jared Williams</em> &mdash; <a href="http://new2wp.com">http://new2wp.com</a></div>
 
-<p>This plugin is a simple image tooltip script that uses the <a href="http://api.jquery.com/delegate/" target="_blank">.delegate()</a> method in jQuery which makes use of the events <a href="http://api.jquery.com/mouseout/" target="_blank">mouseover</a>, <a href="http://api.jquery.com/mouseout/" target="_blank">mouseout</a> and <a href="http://api.jquery.com/mousemove/" target="_blank">mousemove</a> when applied to an element which contains anchor $('a') elements that link to image files. I am planning on adding <a href="http://api.jquery.com/mouseenter/" target="_blank">mouseenter</a> and <a href="http://api.jquery.com/mouseleave/" target="_blank">mouseleave</a> to the events this uses as well, in the near future. </p>
+<p>This plugin is a simple image tooltip script that uses the <a href="http://api.jquery.com/delegate/" target="_blank">.delegate()</a> method in jQuery which makes use of the events <a href="http://api.jquery.com/mouseout/" target="_blank">mouseover</a>, <a href="http://api.jquery.com/mouseout/" target="_blank">mouseout</a> and <a href="http://api.jquery.com/mousemove/" target="_blank">mousemove</a> when applied to an element which contains anchor $('a') elements that link to image files. I am planning on adding <a href="http://api.jquery.com/mouseenter/" target="_blank">mouseenter</a> and <a href="http://api.jquery.com/mouseleave/" target="_blank">mouseleave</a> to the events this uses as well, in the near future.</p>
 
-<p><strong>Explanation:</strong><br />
+<div style="width:500px; margin-left:auto; margin-right:auto; padding:20px; border:1px solid #eee">
+<strong>Links:</strong>
+<p>
+
+Blog post: <a href="http://new2jQuery.com/jquery/tipitup-jquery-image-tooltip" target="_blank">http://new2jQuery.com/jquery/tipitup-jquery-image-tooltip</a><br />
+
+Download: <a href="http://new2jquery.com/wp-content/downloads/TipItUp/index.html">http://new2jquery.com/wp-content/downloads/TipItUp/index.html</a><br />
+<br />
+
+Fiddle with it: <a href="http://www.jsfiddle.net/jaredwilli/gyVkB/" target="_blank">http://www.jsfiddle.net/jaredwilli/gyVkB/</a><br />
+
+Fork me on Git: <a href="https://github.com/jaredwilli/TipItUp" target="_blank">https://github.com/jaredwilli/TipItUp</a><br />
+
+</p>
+</div>
+
+<p><strong>About the plugin:</strong><br />
 When hovering your mouse over the link, the image will display as a tooltip using the the href value of the link, and the title of the link, if one exists, will be displayed below the image in the tooltip.</p>
 
 <p>The script removes the value from the link href and title attributes temporarily while mousing over the link, and transfers them back to the link when mousing off of it.</p>
@@ -33,28 +128,49 @@ When hovering your mouse over the link, the image will display as a tooltip usin
 
 <p>Event delegation is to bind an event handler to a containing element and then have an action take place based on which specific element within that containing element is targeted.</p>
 
-<strong>Demo 1</strong><br />
+<h3>Demo 1: Custom Styling</h3>
 
-It works with just plain text links to images.
+Here's an example with just plain text links to images showing a customized styling of the tooltip. 
 
 <div class="demo1">
-		<a href="http://new2wp.com/wp-content/uploads/2010/11/science--300x284.jpg" title="Christian Science Theater in Boston">Image 1</a>
-		<a href="http://new2wp.com/wp-content/uploads/2010/11/DSC00023-300x225.jpg" title="Science Theater">Image 2</a>
-		<a href="http://new2wp.com/wp-content/uploads/2010/11/celldriving-300x225.jpg" title="Driving with Style">Image 3</a>
-		<a href="http://new2wp.com/wp-content/uploads/2010/06/new2wp-mac-200x200.png" title="Insite.ly"></a>
-		<a href="http://new2wp.com/wp-content/uploads/2010/11/Morning-Perfection-6-300x225.png" title="Zakim Sunrise">Image 4</a>
-		<a href="http://new2wp.com/wp-content/uploads/2010/11/DSC00023-300x225.jpg" title="Science Theater">Image 5</a>
-		<a href="http://new2wp.com/wp-content/uploads/2010/11/celldriving-300x225.jpg" title="Driving with Style">Image 6</a>
-		<a href="http://new2wp.com/wp-content/uploads/2010/11/science--300x284.jpg" title="Christian Science Theater in Boston">Image 7</a>
-		<a href="http://new2wp.com/wp-content/uploads/2010/11/DSC00023-300x225.jpg" title="Science Theater">Image 8</a>
-		<a href="http://new2wp.com/wp-content/uploads/2010/11/celldriving-300x225.jpg" title="Driving with Style">Image 9</a>
-		<a href="http://new2wp.com/wp-content/uploads/2010/11/science--300x284.jpg" title="Christian Science Theater in Boston">Image 10</a>
-	<a href="http://new2wp.com/wp-content/uploads/2010/11/DSC00023-300x225.jpg" title="Science Theater">Image 11</a>
+	<a href="http://new2wp.com/wp-content/uploads/2010/11/science--300x284.jpg" title="Christian Science Theater in Boston">Image 1</a>,
+	<a href="http://new2wp.com/wp-content/uploads/2010/11/DSC00023-300x225.jpg" title="Science Theater">Image 2</a>,
+	<a href="http://new2wp.com/wp-content/uploads/2010/11/celldriving-300x225.jpg" title="Driving with Style">Image 3</a>,
+	<a href="http://new2wp.com/wp-content/uploads/2010/11/Morning-Perfection-6-300x225.png" title="Zakim Sunrise">Image 4</a>,
+	<a href="http://new2wp.com/wp-content/uploads/2010/11/DSC00023-300x225.jpg" title="Science Theater">Image 5</a>,
+	<a href="http://new2wp.com/wp-content/uploads/2010/11/celldriving-300x225.jpg" title="Driving with Style">Image 6</a>,
+	<a href="http://new2wp.com/wp-content/uploads/2010/11/science--300x284.jpg" title="Christian Science Theater in Boston">Image 7</a>,
+	<a href="http://new2wp.com/wp-content/uploads/2010/11/DSC00023-300x225.jpg" title="Science Theater">Image 8</a>,
+	<a href="http://new2wp.com/wp-content/uploads/2010/11/celldriving-300x225.jpg" title="Driving with Style">Image 9</a>,
+	<a href="http://new2wp.com/wp-content/uploads/2010/11/science--300x284.jpg" title="Christian Science Theater in Boston">Image 10</a>,
+	<a href="http://new2wp.com/wp-content/uploads/2010/11/DSC00023-300x225.jpg" title="Science Theater">Image 11</a>,
+	<a href="http://new2wp.com/wp-content/uploads/2010/11/science--300x284.jpg" title="Christian Science Theater in Boston">Image 12</a>,
+	<a href="http://new2wp.com/wp-content/uploads/2010/11/DSC00023-300x225.jpg" title="Science Theater">Image 13</a>,
+	<a href="http://new2wp.com/wp-content/uploads/2010/11/celldriving-300x225.jpg" title="Driving with Style">Image 14</a>,
+	<a href="http://new2wp.com/wp-content/uploads/2010/11/DSC00023-300x225.jpg" title="Science Theater">Image 15</a>,
+	<a href="http://new2wp.com/wp-content/uploads/2010/11/celldriving-300x225.jpg" title="Driving with Style">Image 16</a>,
+	<a href="http://new2wp.com/wp-content/uploads/2010/11/science--300x284.jpg" title="Christian Science Theater in Boston">Image 17</a>,
+	<a href="http://new2wp.com/wp-content/uploads/2010/11/DSC00023-300x225.jpg" title="Science Theater">Image 18</a>,
+	<a href="http://new2wp.com/wp-content/uploads/2010/11/celldriving-300x225.jpg" title="Driving with Style">Image 19</a>,
+	<a href="http://new2wp.com/wp-content/uploads/2010/11/science--300x284.jpg" title="Christian Science Theater in Boston">Image 20</a>
 </div>
 
-<strong>Demo 2</strong><br />
+<pre>
+$(function() {
+	$('.demo1').TipItUp({
+		style : {
+			border: "1px solid #999",
+			backgroundColor: "green",
+			color: "white",
+			padding: "10px",
+			fontWeight: "bold"
+		}
+	});
+});
+</pre>
 
-You can use thumbnails that link to the fullsize version of them.
+<h3>Demo 2: Fading and Delay Speeds</h3>
+You can set custom fade in and out speeds, as well as the delay amount. Hover your mouse over the thumbnails for a second to see.
 
 <div class="demo2">
 	<a href="http://new2wp.com/wp-content/uploads/2010/11/science--300x284.jpg" title="Science Theater"><img src="http://new2wp.com/wp-content/uploads/2010/11/science--200x200.jpg" alt="Christian Science Theater in Boston" width="50" height="50" border="0" title="Christian Science Theater in Boston" /></a>
@@ -70,13 +186,20 @@ You can use thumbnails that link to the fullsize version of them.
 	<a href="http://new2wp.com/wp-content/uploads/2010/11/DSC00023-300x225.jpg" title="Science Theater"><img src="http://new2wp.com/wp-content/uploads/2010/11/DSC00023-200x200.jpg" alt="Science Theater" width="50" height="50" border="0" /></a>
 </div>
 
+<pre>
+$(function() {
+	$('.demo2').TipItUp({ 
+		fadeIn: 50, 
+		fadeOut: 400, 
+		delay: 100 
+	});
+});
+</pre>	
 
-<strong>Demo 3</strong><br />
-
-You can use nested elements containing links also.
+<h3>Demo 3</h3><br />
+This example is to show how you can use nested elements containing links also. 
 
 <div class="demo3">
-
 	<div class="parent">
 		<a href="http://new2wp.com/wp-content/uploads/2010/11/science--300x284.jpg" title="Science Theater"><img src="http://new2wp.com/wp-content/uploads/2010/11/science--200x200.jpg" alt="Christian Science Theater in Boston" width="160" height="160" border="0" title="Christian Science Theater in Boston" /></a>
 	
@@ -88,7 +211,7 @@ You can use nested elements containing links also.
 	</div>
 	
 	<div class="parent">
-		<a href="http://new2wp.com/wp-content/uploads/2010/11/science--300x284.jpg" title="Science Theater"><img src="http://new2wp.com/wp-content/uploads/2010/11/science--200x200.jpg" alt="Christian Science Theater in Boston" width="160" height="160" border="0" title="Christian Science Theater in Boston" /></a>
+		<a href="http://new2wp.com/wp-content/uploads/2010/11/Morning-Perfection-6-300x225.png" title="Zakim Sunrise"><img src="http://new2wp.com/wp-content/uploads/2010/11/Morning-Perfection-6-200x200.png" alt="Zakim Sunrise" width="160" height="160" border="0" title="Zakim Sunrise" /></a>
 	
 		<div class="nested">
 			<a href="http://new2wp.com/wp-content/uploads/2010/11/DSC00023-300x225.jpg" title="Science Theater"><img src="http://new2wp.com/wp-content/uploads/2010/11/DSC00023-200x200.jpg" alt="Science Theater" width="50" height="50" border="0" /></a>
@@ -98,7 +221,7 @@ You can use nested elements containing links also.
 	</div>
 
 	<div class="parent">
-		<a href="http://new2wp.com/wp-content/uploads/2010/11/science--300x284.jpg" title="Science Theater"><img src="http://new2wp.com/wp-content/uploads/2010/11/science--200x200.jpg" alt="Christian Science Theater in Boston" width="160" height="160" border="0" title="Christian Science Theater in Boston" /></a>
+		<a href="http://new2wp.com/wp-content/uploads/2010/11/celldriving-300x225.jpg" title="Driving with Style"><img src="http://new2wp.com/wp-content/uploads/2010/11/celldriving-200x200.jpg" alt="Driving with Style" width="160" height="160" border="0" title="Driving with Style" /></a>
 	
 		<div class="nested">
 			<a href="http://new2wp.com/wp-content/uploads/2010/11/DSC00023-300x225.jpg" title="Science Theater"><img src="http://new2wp.com/wp-content/uploads/2010/11/DSC00023-200x200.jpg" alt="Science Theater" width="50" height="50" border="0" /></a>
@@ -106,13 +229,38 @@ You can use nested elements containing links also.
 			<a href="http://new2wp.com/wp-content/uploads/2010/11/celldriving-300x225.jpg" title="Driving with Style"><img src="http://new2wp.com/wp-content/uploads/2010/11/celldriving-200x200.jpg" alt="Driving with Style" width="50" height="50" border="0" /></a>
 		</div>
 	</div>
-
 </div>
 
+<pre>
+$(function() {
+	$('.demo3').TipItUp();
+});
+</pre>
+
+<h3>Demo 4</h3><br />
+You can choose whether or not the href and title attributes for the links should be removed when you hover over them. The defaults are set to true so if you do not set either of these to false yourself, you won't be able to click the link to view the image itself, and the title of the link will not display along with the tooltip.
+
+<div id="demo4">Loading...</div><br />
+
+<pre>
+$(function() {
+	$('#demo4').TipItUp({ 
+		removeHref: false,
+		removeTitle: false
+	});
+});
+</pre>
+
+<div id="branding" style="float:right;"></div>
+This demo uses the <a href="http://code.google.com/apis/imagesearch/v1/devguide.html" target="_blank">Google Image Search API</a> to grab a ton a images so you can see an example of this plugin where event delegation comes in handy.
+
+
+<br clear="all" />
+<br clear="all" />
+<br clear="all" />
 <div class="footer">
 	<div class="fl">Copyright &copy;2010 <a href="http://new2wp.com">Jared Williams</a></div>
 	<div class="fr">Licensed under the <a href="http://www.opensource.org/licenses/mit-license.php" target="_blank">MIT License</a></div>
-	
 </div>
 
 <script src="http://code.jquery.com/jquery-1.4.4.min.js"></script>
@@ -122,19 +270,26 @@ $(function() {
 	$('.demo1').TipItUp({
 		style : {
 			border: "1px solid #999",
-			background: "blue",
+			backgroundColor: "green",
 			color: "white",
+			padding: '10px',
 			fontWeight: "bold"
 		}
 	});
 	
-	$('.demo2').TipItUp({ fadeIn:600, delay:100 });
+	$('.demo2').TipItUp({ fadeIn:100, fadeOut:200, delay:10 });
 	
 	$('.demo3').TipItUp();
-		
+
+	$('#demo4').TipItUp({ 
+		removeHref: false, 
+		removeTitle: false, 
+		fadeIn:100, 
+		fadeOut:400, 
+		delay:20 
+	});		
 });
 </script>
-
 
 <script type="text/javascript">var gaJsHost=(("https:"==document.location.protocol)?"https://ssl.":"http://www.");document.write(unescape("%3Cscript src='"+gaJsHost+"google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));</script> <script type="text/javascript">try{var pageTracker=_gat._getTracker("UA-12899773-1");pageTracker._trackPageview();}catch(err){}</script>
 

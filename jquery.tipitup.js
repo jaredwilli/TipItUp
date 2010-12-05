@@ -15,8 +15,8 @@
 			removeHref: true,
 			removeTitle: true,
 			offset: 10,
-			offsety: 50,
-			offsetx: 20,
+			offsety: 10,
+			offsetx: 2,
 			fadeIn: 200,
 			fadeOut: 200,
 			delay: 10,
@@ -28,7 +28,7 @@
 			}
 		};
 
-		var settings = $.extend( {}, defaults, options );
+		var settings = $.extend( {}, defaults, options );					
 		
 		var $imgTip = $('<div class="tip"></div>').hide().prependTo('body'),
 			$win = $(window),
@@ -52,18 +52,15 @@
 				
 				for (var axis in dimensions ) {
 					if (dimensions[axis][0] < dimensions[axis][1] + positions[axis] + settings.offset) {
-						positions.y -= dimensions[axis][1] - settings.offsety;
-						positions.x -= dimensions[axis][1] - settings.offsetx;
+						positions[axis] -= dimensions[axis][1] - settings.offset;
 					} else {
-						positions.y += settings.offsety;
-						positions.x += settings.offsetx;
+						positions[axis] += settings.offset;
 					}
 				}
 				$imgTip.css({ 
-					top: positions.y,
-					left: positions.x,
-					'position': 'absolute', 
-					'zIndex': 10
+					top: positions.y + settings.offsety, 
+					left: positions.x + settings.offsetx,
+					'position': 'absolute', 'zIndex': 1000
 				});
 				$imgTip.css( settings.style );
 			}

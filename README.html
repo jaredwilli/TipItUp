@@ -1,0 +1,114 @@
+# $.TipItUp(): An image tooltip jQuery plugin with event delegation.
+
+This plugin is a simple image tooltip script that uses the .delegate() method in jQuery which makes use of the events mouseover, mouseout and mousemove when applied to an element which contains anchor $('a') elements that link to image files. I am planning on adding mouseenter and mouseleave to the events this uses as well, in the near future.
+
+**Blog:** <http://new2jquery.com/jquery/tipitup-jquery-image-tooltip>
+**Demo:** <http://new2jquery.com/wp-content/demos/TipItUp/index.html>
+**Fiddle:** <http://www.jsfiddle.net/jaredwilli/gyVkB/>
+
+###Events used:###
+
+* mouseOver
+* mouseOut
+* mouseMove
+
+
+##Defaults:##
+
+		var defaults = {
+			title: '',
+			removeHref: true,
+			removeTitle: true,
+			offset: 10,
+			offsety: 0,
+			offsetx: 0,
+			fadeIn: 200,
+			fadeOut: 200,
+			delay: 10,
+			style: {
+				backgroundColor: '#CCC',
+				border: '1px solid #999',
+				color: '#333',
+				padding: '10px'
+			}
+		};
+
+* Note: The offsetx and offsety options do not work correctly yet. It is not recommended you change them.
+
+##Examples##
+
+All you have to do to use this plugin is select the element that contains a set of links which link to image files.
+
+**HTML Code:**
+
+<div class="images">    
+    <a href="/path_to_image/filename1.jpg" title="Image Title">Link to image1</a>
+    <a href="/path_to_image/filename2.jpg" title="Image Title">Link to image2</a>
+    <a href="/path_to_image/filename3.jpg" title="Image Title">Link to image3</a>
+</div>
+
+
+**Basic usage:**
+
+$(function() {
+    $('.images').TipItUp();
+});
+
+
+**Fading and Delay Speeds**
+You can set custom fade in and out speeds, as well as the delay amount. Hover your mouse over the thumbnails for a second to see. 
+
+$(function() {
+    // customize options support:
+    $('.images').TipItUp({
+        fadeIn: 50,
+		fadeOut: 100,
+        delay: 30;
+    });
+});
+
+
+**Custom Styling**
+
+This is how you can override the default style settings to change the style of the tooltip.
+
+$(function() {
+    $('.images').TipItUp({
+		style: {
+			border: "1px solid #999",
+			backgroundColor: "#eee",
+			color: "#00ff00",
+			padding: "10px",
+			fontWeight: "bold"
+		}
+    });
+});
+
+
+**Keep the Href and Title Attributes**
+
+You can choose whether or not the href and title attributes for the links should be removed when you hover over them. The defaults are set to true so if you do not set either of these to false yourself, you won't be able to click the link to view the image itself, and the title of the link will not display along with the tooltip. 
+
+$(function() {
+    $('.images').TipItUp({
+		removeHref: false,
+		removeTitle: false
+});
+
+
+##Changelog##
+
+* Version 1.0.4
+   Added new options for removeHref, removeTitle, styles, offsetx and offsety.
+   The options for offsetx and offsety are still buggy and need fixing. Recommend not using these yet.
+
+* Version 1.0.3
+   First working production version.
+   
+
+##TODO:##
+
+* fix the offsetx and offsety so the options for them can be used
+* fix the mouseover animation buildup when mousing on and off links fast
+* add option to not use mouseover event to show stationary tooltips
+* add option to control the size of images in the tooltip

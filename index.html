@@ -74,7 +74,7 @@ function searchComplete() {
 			contentDiv.appendChild(ul);
 		}
 		// Now add links to additional pages of search results.
-		//addPaginationLinks(imageSearch);
+		addPaginationLinks(imageSearch);
 	}
 }
 	
@@ -237,7 +237,7 @@ $(function() {
 });
 </pre>
 
-<h3>Demo 4</h3><br />
+<h3>Demo 4: Keep the Href and Title Attributes</h3><br />
 You can choose whether or not the href and title attributes for the links should be removed when you hover over them. The defaults are set to true so if you do not set either of these to false yourself, you won't be able to click the link to view the image itself, and the title of the link will not display along with the tooltip.
 
 <div id="demo4">Loading...</div><br />
@@ -252,7 +252,7 @@ $(function() {
 </pre>
 
 <div id="branding" style="float:right;"></div>
-This demo uses the <a href="http://code.google.com/apis/imagesearch/v1/devguide.html" target="_blank">Google Image Search API</a> to grab a ton a images so you can see an example of this plugin where event delegation comes in handy.
+This demo uses the <a href="http://code.google.com/apis/imagesearch/v1/devguide.html" target="_blank">Google Image Search API</a> to grab a ton a images so you can see an example of this plugin where event delegation comes in handy. (I realized after the fact that this was not really possible with Google's image API lol shhh).
 
 
 <br clear="all" />

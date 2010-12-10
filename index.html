@@ -268,6 +268,7 @@ This demo uses the <a href="http://code.google.com/apis/imagesearch/v1/devguide.
 <script type="text/javascript">
 $(function() {
 	$('.demo1').TipItUp({
+		delay:10,
 		style : {
 			border: "1px solid #999",
 			backgroundColor: "green",
@@ -277,16 +278,16 @@ $(function() {
 		}
 	});
 	
-	$('.demo2').TipItUp({ fadeIn:100, fadeOut:200, delay:10 });
+	$('.demo2').TipItUp({ fadeIn:100, fadeOut:200, delay:300 });
 	
-	$('.demo3').TipItUp();
+	$('.demo3').TipItUp({delay:100});
 
 	$('#demo4').TipItUp({ 
 		removeHref: false, 
 		removeTitle: false, 
 		fadeIn:100, 
 		fadeOut:400, 
-		delay:20 
+		delay:400 
 	});		
 });
 </script>

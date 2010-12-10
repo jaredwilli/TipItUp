@@ -19,7 +19,7 @@
 			offsetx: 0,
 			fadeIn: 200,
 			fadeOut: 200,
-			delay: 10,
+			delay: 300, // minimum of 75
 			style: {
 				backgroundColor: '#CCC',
 				border: '1px solid #999',
@@ -84,6 +84,9 @@
 					tip.title = settings.title;
 				}
 				
+				if (settings.delay < 75) {
+					settings.delay = 75;
+				}
 				/* Show the tooltip */
 				showTip = setTimeout(function() {
 					$link.data('active', true);

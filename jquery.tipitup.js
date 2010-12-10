@@ -12,6 +12,7 @@
 
 		var defaults = {
 			title: '',
+			class: '',
 			removeHref: true,
 			removeTitle: true,
 			offset: 10,
@@ -103,6 +104,9 @@
 					}
 					if (settings.removeTitle) {
 						$link.attr('title', '');
+					}
+					if (settings.class) {
+						$link.addClass(settings.class);
 					}
 
 				}, settings.delay );

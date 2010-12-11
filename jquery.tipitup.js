@@ -14,6 +14,8 @@
  * fix the mouseover animation buildup when mousing on and off links fast
  * add option to not use mouseover event to show stationary tooltips
  * add option to control the size of images in the tooltip
+ * fix the offsets so that IE displays the tooltips correclt
+ * http://www.quirksmode.org/dom/w3c_cssom.html
  */
  
 (function($) {

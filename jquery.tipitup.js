@@ -11,7 +11,6 @@
  * TODO:
  *
  * fix the offsetx and offsety so the options for them can be used
- * fix the mouseover animation buildup when mousing on and off links fast
  * add option to not use mouseover event to show stationary tooltips
  * add option to control the size of images in the tooltip
  * fix the offsets so that IE displays the tooltips correclt
@@ -96,9 +95,11 @@
 					tip.title = settings.title;
 				}
 				
+				/* Make the minimum delay you can use at least 75 */
 				if (settings.delay < 75) {
 					settings.delay = 75;
 				}
+				
 				/* Show the tooltip */
 				showTip = setTimeout(function() {
 					$link.data('active', true);

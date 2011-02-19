@@ -2,8 +2,8 @@
 
 This plugin is a simple image tooltip script that uses the .delegate() method in jQuery which makes use of the events mouseover, mouseout and mousemove when applied to an element which contains anchor $('a') elements that link to image files. I am planning on adding mouseenter and mouseleave to the events this uses as well, in the near future.
 
-**Blog:** <http://new2jquery.com/jquery/tipitup-jquery-image-tooltip>
-**Demo:** <http://new2jquery.com/wp-content/demos/TipItUp/index.html>
+**Blog:** <http://new2wp.com/rookie/tipitup-jquery-image-tooltip/>
+**Demo:** <http://new2wp.com/labs/TipItUp/>
 **Fiddle:** <http://www.jsfiddle.net/jaredwilli/gyVkB/>
 
 ###Events used:###
